@@ -270,8 +270,8 @@ failTaskOnHttpSuccessWithErrors successOrError =
 decoderOrError : Json.Decode.Decoder a -> Json.Decode.Decoder (SuccessOrError a)
 decoderOrError decoder =
     Json.Decode.oneOf
-        [ decoder |> Json.Decode.map Success
-        , GraphqlError.decoder |> Json.Decode.map ErrorThing
+        [ GraphqlError.decoder |> Json.Decode.map ErrorThing
+        , decoder |> Json.Decode.map Success
         ]
 
 
